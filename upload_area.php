@@ -42,11 +42,10 @@
             border: 1px solid #ccc;
             border-radius: 5px;
             padding: 10px;
-            
         }
 
         button.btn {
-            background-color:#7851a9;
+            background-color: #7851a9;
             color: #fff;
             border: none;
             border-radius: 5px;
@@ -59,6 +58,13 @@
         button.btn:hover {
             background-color: #7851a9;
         }
+
+       
+        #image_preview {
+            max-width: 100%;
+            margin-top: 15px;
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -68,9 +74,28 @@
                 <label for="content">Description:</label>
                 <textarea name="content" id="content" rows="5" required></textarea>
             </div>
-            <input type="file" name="file" required>
+            <input type="file" name="file" id="file_path" required onchange="previewImage(event)">
+            
+            <img id="image_preview" src="" alt="Image Preview">
             <button type="submit" class="btn" name="submit">Upload</button>
         </form>
     </div>
+
+    <script>
+        function previewImage(event) {
+            const file = event.target.files[0];
+            const reader = new FileReader();
+            
+            reader.onload = function() {
+                const output = document.getElementById('image_preview');
+                output.src = reader.result;
+                output.style.display = 'block';
+            };
+            
+            if (file) {
+                reader.readAsDataURL(file); 
+            }
+        }
+    </script>
 </body>
 </html>

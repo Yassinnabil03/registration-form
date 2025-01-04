@@ -65,21 +65,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             margin: 0;
             padding: 0;
             background-color: #aaaaaa;
+            
         }
 
         div {
             max-width: 500px;
-            margin: 50px auto;
+            margin: 10px auto;
             background: #fff;
             padding: 20px;
             border-radius: 5px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            
         }
 
         form {
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            
         }
 
         .field_data label {
@@ -113,6 +115,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         button.btn:hover {
             background-color: #6c49a0;
         }
+        div img {
+            display: block;
+            margin: 0 auto; 
+            max-width: 100%;
+            height: auto; 
+        }
+
     </style>
 </head>
 <body>
@@ -128,7 +137,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <input type="file" id="file_path" name="file_path">
                 <?php if (!empty($post['file_path'])): ?>
                     <p>Current Image:</p>
-                    <img src="<?php echo htmlspecialchars($post['file_path']); ?>" alt="Current Image" style="width: 200px;">
+                    <img src="<?php echo htmlspecialchars($post['file_path']); ?>" alt="Current Image" style="width: 350px;" >
                 <?php endif; ?>
             </div>
             <button type="submit" class="btn">Update</button>
